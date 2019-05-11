@@ -35,7 +35,7 @@ def main(config):
 
 if __name__ == '__main__':
     # data_root = os.path.join(os.path.expanduser('~'), 'data')
-    vgg_path = './weights/vgg16_feat.pth'
+    vgg_path = 'weights/vgg16_feat.pth'
     # # -----ECSSD dataset-----
     # train_path = os.path.join(data_root, 'ECSSD/images')
     # label_path = os.path.join(data_root, 'ECSSD/ground_truth_mask')
@@ -50,11 +50,11 @@ if __name__ == '__main__':
     # train_file = os.path.join(data_root, 'combined/train_cvpr2013.txt')
     # valid_file = os.path.join(data_root, 'combined/valid_cvpr2013.txt')
     # test_file = os.path.join(data_root, 'combined/test_cvpr2013.txt')
-    image_path = './data/combined/image'
-    label_path = './data/combined/annotation'
-    train_file = './data/combined/train_cvpr2013.txt'
-    valid_file = './data/combined/valid_cvpr2013.txt'
-    test_file = './data/combined/test_cvpr2013.txt'
+    image_path = 'data/combined/image'
+    label_path = 'data/combined/annotation'
+    train_file = 'data/combined/train_cvpr2013.txt'
+    valid_file = 'data/combined/valid_cvpr2013.txt'
+    test_file = 'data/combined/test_cvpr2013.txt'
     parser = argparse.ArgumentParser()
 
     # Hyper-parameters
@@ -77,7 +77,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_file', type=str, default=valid_file)
     parser.add_argument('--num_thread', type=int, default=4)
     parser.add_argument('--load', type=str, default='')
-    parser.add_argument('--save_fold', type=str, default='./results')
+    parser.add_argument('--save_fold', type=str, default='results')
     parser.add_argument('--epoch_val', type=int, default=10)
     parser.add_argument('--epoch_save', type=int, default=20)
     parser.add_argument('--epoch_show', type=int, default=1)
@@ -87,13 +87,13 @@ if __name__ == '__main__':
     parser.add_argument('--test_path', type=str, default=image_path)
     parser.add_argument('--test_label', type=str, default=label_path)
     parser.add_argument('--test_file', type=str, default=test_file)
-    parser.add_argument('--model', type=str, default='./weights/final.pth')
-    parser.add_argument('--test_fold', type=str, default='./results/test')
+    parser.add_argument('--model', type=str, default='weights/final.pth')
+    parser.add_argument('--test_fold', type=str, default='results/test')
     parser.add_argument('--use_crf', type=bool, default=False)
 
     # Misc
     parser.add_argument('--mode', type=str, default='test', choices=['train', 'test'])
-    parser.add_argument('--visdom', type=bool, default=False)
+    parser.add_argument('--visdom', type=bool, default=True)
 
     config = parser.parse_args()
     if not os.path.exists(config.save_fold): os.mkdir(config.save_fold)

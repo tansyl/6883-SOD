@@ -69,9 +69,9 @@ def get_loader(img_root, label_root, img_size, batch_size, filename=None, mode='
 
 if __name__ == '__main__':
     import numpy as np
-    img_root = './data/combined/image'
-    label_root = './data/combined/annotation'
-    filename = './data/combined/train_cvpr2013.txt'
+    img_root = 'data/combined/image'
+    label_root = 'data/combined/annotation'
+    filename = 'data/combined/train_cvpr2013.txt'
     loader = get_loader(img_root, label_root, 224, 1, filename=filename, mode='test')
     for image, label in loader:
         print(np.array(image).shape)
