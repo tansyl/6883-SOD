@@ -62,7 +62,7 @@ if __name__ == '__main__':
     parser.add_argument('--img_size', type=int, default=256)  # 256
     parser.add_argument('--lr', type=float, default=1e-6)
     parser.add_argument('--clip_gradient', type=float, default=1.0)
-    parser.add_argument('--cuda', type=bool, default=False)
+    parser.add_argument('--cuda', type=bool, default=True)
 
     # Training settings
     parser.add_argument('--vgg', type=str, default=vgg_path)
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
     # Misc
     parser.add_argument('--mode', type=str, default='test', choices=['train', 'test'])
-    parser.add_argument('--visdom', type=bool, default=False)
+    parser.add_argument('--visdom', type=bool, default=True)
 
     config = parser.parse_args()
     if not os.path.exists(config.save_fold): os.mkdir(config.save_fold)
