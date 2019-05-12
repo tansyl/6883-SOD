@@ -60,7 +60,7 @@ if __name__ == '__main__':
     # Hyper-parameters
     parser.add_argument('--n_color', type=int, default=3)
     parser.add_argument('--img_size', type=int, default=256)  # 256
-    parser.add_argument('--lr', type=float, default=1e-7)
+    parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--clip_gradient', type=float, default=1.0)
     parser.add_argument('--cuda', type=bool, default=True)
 
