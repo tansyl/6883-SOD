@@ -69,7 +69,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_path', type=str, default=image_path)
     parser.add_argument('--label_path', type=str, default=label_path)
     parser.add_argument('--train_file', type=str, default=train_file)
-    parser.add_argument('--epoch', type=int, default=50)
+    parser.add_argument('--epoch', type=int, default=300)
     parser.add_argument('--batch_size', type=int, default=1)  # 8
     parser.add_argument('--val', type=bool, default=True)
     parser.add_argument('--val_path', type=str, default=image_path)
