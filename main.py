@@ -79,7 +79,7 @@ if __name__ == '__main__':
     parser.add_argument('--load', type=str, default='')
     parser.add_argument('--save_fold', type=str, default='results')
     parser.add_argument('--epoch_val', type=int, default=10)
-    parser.add_argument('--epoch_save', type=int, default=20)
+    parser.add_argument('--epoch_save', type=int, default=50)
     parser.add_argument('--epoch_show', type=int, default=1)
     parser.add_argument('--pre_trained', type=str, default=None)
 
