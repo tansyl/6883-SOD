@@ -6,6 +6,7 @@ import torch.nn.functional as F
 class Loss(nn.Module):
     def __init__(self, weight=[1.0] * 7):
         super(Loss, self).__init__()
+        weight[7] = 2.0
         self.weight = weight
 
     def forward(self, x_list, label):
