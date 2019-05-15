@@ -11,7 +11,7 @@ connect = {'dss': [[2, 3, 4, 5], [2, 3, 4, 5], [4, 5], [4, 5], [], []]}
 
 
 # vgg16
-def vgg(cfg, i=3, batch_norm=False):
+def vgg(cfg, i=3, batch_norm=True):
     layers = []
     in_channels = i
     for v in cfg:
@@ -140,9 +140,9 @@ def xavier(param):
 def weights_init(m):
     if isinstance(m, nn.Conv2d):
         xavier(m.weight.data)
-    elif isinstance(m, nn.BatchNorm2d):
-        init.constant_(m.weight, 1)
-        init.constant_(m.bias, 0)
+    # elif isinstance(m, nn.BatchNorm2d):
+    #     init.constant_(m.weight, 1)
+    #     init.constant_(m.bias, 0)
 
 
 if __name__ == '__main__':
