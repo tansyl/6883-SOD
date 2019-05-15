@@ -53,7 +53,7 @@ if __name__ == '__main__':
     image_path = 'data/combined/image'
     label_path = 'data/combined/annotation'
     train_file = 'data/combined/train_cvpr2013.txt'
-    valid_file = 'data/combined/valid_cvpr2013.txt'
+    valid_file = 'data/combined/valid_new.txt'
     test_file = 'data/combined/test_cvpr2013.txt'
     parser = argparse.ArgumentParser()
 
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_path', type=str, default=image_path)
     parser.add_argument('--label_path', type=str, default=label_path)
     parser.add_argument('--train_file', type=str, default=train_file)
-    parser.add_argument('--epoch', type=int, default=250)
+    parser.add_argument('--epoch', type=int, default=50)
     parser.add_argument('--batch_size', type=int, default=1)  # 8
     parser.add_argument('--val', type=bool, default=True)
     parser.add_argument('--val_path', type=str, default=image_path)
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     parser.add_argument('--load', type=str, default='')
     parser.add_argument('--save_fold', type=str, default='results')
     parser.add_argument('--epoch_val', type=int, default=10)
-    parser.add_argument('--epoch_save', type=int, default=50)
+    parser.add_argument('--epoch_save', type=int, default=20)
     parser.add_argument('--epoch_show', type=int, default=1)
     parser.add_argument('--pre_trained', type=str, default=None)
 
