@@ -11,7 +11,7 @@ connect = {'dss': [[2, 3, 4, 5], [2, 3, 4, 5], [4, 5], [4, 5], [], []]}
 
 
 # vgg16
-def vgg(cfg, i=3, batch_norm=True):
+def vgg(cfg, i=3, batch_norm=False):
     layers = []
     in_channels = i
     for v in cfg:
