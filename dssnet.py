@@ -140,9 +140,9 @@ def xavier(param):
 def weights_init(m):
     if isinstance(m, nn.Conv2d):
         xavier(m.weight.data)
-    # elif isinstance(m, nn.BatchNorm2d):
-    #     init.constant_(m.weight, 1)
-    #     init.constant_(m.bias, 0)
+    elif isinstance(m, nn.BatchNorm2d):
+        init.constant_(m.weight, 1)
+        init.constant_(m.bias, 0)
 
 
 if __name__ == '__main__':
