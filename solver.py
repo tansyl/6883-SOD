@@ -53,6 +53,7 @@ class Solver(object):
     # build the network
     def build_model(self):
         self.net = build_model().to(self.device)
+        self.print_network(self.net, 'DSS')
         if self.config.mode == 'train': self.loss = Loss().to(self.device)
         self.net.train()
         self.net.apply(weights_init)

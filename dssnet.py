@@ -11,7 +11,7 @@ connect = {'dss': [[2, 3, 4, 5], [2, 3, 4, 5], [4, 5], [4, 5], [], []]}
 
 
 # vgg16
-def vgg(cfg, i=3, batch_norm=True):
+def vgg(cfg, i=3, batch_norm=False):
     layers = []
     in_channels = i
     for v in cfg:
@@ -19,7 +19,7 @@ def vgg(cfg, i=3, batch_norm=True):
             layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
         else:
             conv2d = nn.Conv2d(in_channels, v, kernel_size=3, padding=1)
-            if batch_norm:
+            if batch_norm and (in_channels != v):
                 layers += [conv2d, nn.BatchNorm2d(v), nn.ReLU(inplace=True)]
             else:
                 layers += [conv2d, nn.ReLU(inplace=True)]
@@ -34,8 +34,10 @@ class ConcatLayer(nn.Module):
         l, up, self.scale = len(list_k), [], scale
         for i in range(l):
             up.append(nn.ConvTranspose2d(1, 1, list_k[i], list_k[i] // 2, list_k[i] // 4))
+
         self.upconv = nn.ModuleList(up)
         self.conv = nn.Conv2d(l + 1, 1, 1, 1)
+        self.bn = nn.BatchNorm2d(1)
         self.deconv = nn.ConvTranspose2d(1, 1, k * 2, k, k // 2) if scale else None
 
     def forward(self, x, list_x):
@@ -43,9 +45,9 @@ class ConcatLayer(nn.Module):
         for i, elem in enumerate(list_x):
             elem_x.append(self.upconv[i](elem))
         if self.scale:
-            out = self.deconv(self.conv(torch.cat(elem_x, dim=1)))
+            out = self.deconv(self.bn(self.conv(torch.cat(elem_x, dim=1))))
         else:
-            out = self.conv(torch.cat(elem_x, dim=1))
+            out = self.bn(self.conv(torch.cat(elem_x, dim=1)))
         return out
 
 
@@ -93,7 +95,7 @@ def extra_layer(vgg, cfg):
 # DSS network
 # Note: if you use other backbone network, please change extract
 class DSS(nn.Module):
-    def __init__(self, base, feat_layers, concat_layers, connect, extract=[5, 10, 17, 24, 31], v2=True):
+    def __init__(self, base, feat_layers, concat_layers, connect, extract=[3, 8, 15, 22, 29], v2=True):
         super(DSS, self).__init__()
         self.extract = extract
         self.connect = connect
