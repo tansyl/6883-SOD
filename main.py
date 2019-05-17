@@ -52,15 +52,15 @@ if __name__ == '__main__':
     # test_file = os.path.join(data_root, 'combined/test_cvpr2013.txt')
     image_path = 'data/combined/image'
     label_path = 'data/combined/annotation'
-    train_file = 'data/combined/train_cvpr2013.txt'
-    valid_file = 'data/combined/valid_new.txt'
-    test_file = 'data/combined/test_new.txt'
+    train_file = 'data/combined/train.txt'
+    valid_file = 'data/combined/f_val.txt'
+    test_file = 'data/combined/f_test.txt'
     parser = argparse.ArgumentParser()
 
     # Hyper-parameters
     parser.add_argument('--n_color', type=int, default=3)
     parser.add_argument('--img_size', type=int, default=256)  # 256
-    parser.add_argument('--lr', type=float, default=1e-4)
+    parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--clip_gradient', type=float, default=1.0)
     parser.add_argument('--cuda', type=bool, default=True)
 

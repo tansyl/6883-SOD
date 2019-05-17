@@ -37,7 +37,6 @@ class ConcatLayer(nn.Module):
 
         self.upconv = nn.ModuleList(up)
         self.conv = nn.Conv2d(l + 1, 1, 1, 1)
-        self.bn = nn.BatchNorm2d(1)
         self.deconv = nn.ConvTranspose2d(1, 1, k * 2, k, k // 2) if scale else None
 
     def forward(self, x, list_x):
@@ -45,9 +44,9 @@ class ConcatLayer(nn.Module):
         for i, elem in enumerate(list_x):
             elem_x.append(self.upconv[i](elem))
         if self.scale:
-            out = self.deconv(self.bn(self.conv(torch.cat(elem_x, dim=1))))
+            out = self.deconv(self.conv(torch.cat(elem_x, dim=1)))
         else:
-            out = self.bn(self.conv(torch.cat(elem_x, dim=1)))
+            out = self.conv(torch.cat(elem_x, dim=1))
         return out
 
 
