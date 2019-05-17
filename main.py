@@ -52,7 +52,7 @@ if __name__ == '__main__':
     # test_file = os.path.join(data_root, 'combined/test_cvpr2013.txt')
     image_path = 'data/combined/image'
     label_path = 'data/combined/annotation'
-    train_file = 'data/combined/train.txt'
+    train_file = 'data/combined/combined_train.txt'
     valid_file = 'data/combined/f_val.txt'
     test_file = 'data/combined/f_test.txt'
     parser = argparse.ArgumentParser()
